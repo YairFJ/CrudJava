@@ -21,7 +21,13 @@ public class MessageService {
         messages.add(new Message(nextId++ , "Facundo", "Deja de mentir", LocalDateTime.now()));
     }
 
-    
+    public List<Message> getAllMessages(){
+        return messages;
+    }
+
+    public Optional<Message> getById(Long id){
+        return messages.stream().filter( msg -> msg.getId().equals(id)).findFirst();
+    }
 
 
 
