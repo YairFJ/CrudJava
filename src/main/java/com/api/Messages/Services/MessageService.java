@@ -2,6 +2,7 @@ package com.api.Messages.Services;
 
 
 import com.api.Messages.Model.Message;
+import org.apache.logging.log4j.message.ObjectMessage;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -29,10 +30,21 @@ public class MessageService {
         return messages.stream().filter( msg -> msg.getId().equals(id)).findFirst();
     }
 
-    public Message addMessage(Message msg){
-        msg.setId(nextId++);
-        messages.add(msg);
-        return msg;
+    public Message addMessage(Message message){
+        message.setId(nextId++);
+        messages.add(message);
+        return message;
+    }
+
+    public Message updateMessage (Long id,Message updatedMessage){
+        Optional<Message> oldMessage = getById(id);
+        if(oldMessage.isPresent()){
+            Message message = oldMessage.get();
+            message.setUser(updatedMessage.getUser());
+            message.setMessage(updatedMessage.getMessage());
+            return message;
+        }
+        return null;
     }
 
 
