@@ -2,7 +2,6 @@ package com.api.Messages.Services;
 
 
 import com.api.Messages.Model.Message;
-import org.apache.logging.log4j.message.ObjectMessage;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
