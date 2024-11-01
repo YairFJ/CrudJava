@@ -47,5 +47,9 @@ public class MessageService {
         return null;
     }
 
+    public boolean deleteMessage (Long id){
+        return messages.removeIf(msg -> msg.getId().equals(id));
+    }
+
 
 }
