@@ -29,6 +29,11 @@ public class MessageService {
         return messages.stream().filter( msg -> msg.getId().equals(id)).findFirst();
     }
 
+    public Message addMessage(Message msg){
+        msg.setId(nextId++);
+        messages.add(msg);
+        return msg;
+    }
 
 
 }
